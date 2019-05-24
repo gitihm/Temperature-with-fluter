@@ -1,44 +1,57 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:vtemp/store.dart';
-import 'package:vtemp/first_page.dart';
 
-void main(){
+void main() {
   runApp(MaterialApp(
-    title: 'vTemperature',
-    theme: themeData,
-    home : ChangeNotifierProvider<Store>(
-      builder: (_)=>Store(),
-      child: FirstPage(),
-      ),
+    title: 'Named Routes Demo',
+    // Start the app with the "/" named route. In our case, the app will start
+    // on the FirstScreen Widget
+    initialRoute: '/',
+    routes: {
+      // When we navigate to the "/" route, build the FirstScreen Widget
+      '/': (context) => FirstScreen(),
+      // When we navigate to the "/second" route, build the SecondScreen Widget
+      '/second': (context) => SecondScreen(),
+    },
   ));
 }
-final ThemeData themeData = ThemeData(
 
-);
-
-class FirstPage extends StatelessWidget{
+class FirstScreen extends StatelessWidget {
   @override
-  Widget build(BuildContext context){
-    final store = Provider.of<Store>(context);
-    store.setCTX(context);
-    store.setPage(SecondPage());
-
+  Widget build(BuildContext context) {
     return Scaffold(
-      body: First()
+      appBar: AppBar(
+        title: Text('First Screen'),
+      ),
+      body: Center(
+        child: RaisedButton(
+          child: Text('Launch screen'),
+          onPressed: () {
+            // Navigate to the second screen using a named route
+            Navigator.pushNamed(context, '/second');
+          },
+        ),
+      ),
     );
   }
 }
 
-class SecondPage extends MaterialPageRoute{
-  SecondPage() : super(
-    builder: (BuildContext context){
-      return Scaffold(
-        appBar: AppBar(
-          title: Text("Second Page"),
+class SecondScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Second Screen"),
+      ),
+      body: Center(
+        child: RaisedButton(
+          onPressed: () {
+            // Navigate back to the first screen by popping the current route
+            // off the stack
+            Navigator.pop(context);
+          },
+          child: Text('Go back!'),
         ),
-        body: Container(),
-      );
-    }
-  );
+      ),
+    );
+  }
 }

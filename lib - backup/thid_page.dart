@@ -10,7 +10,7 @@ class Second extends StatefulWidget{
 
 class _Second extends State<Second>{
   Widget build(BuildContext context){
-    final store = Provider.of<Store>(context);
+    //final store = Provider.of<Store>(context);
     return
     Container(
       child: Align(
