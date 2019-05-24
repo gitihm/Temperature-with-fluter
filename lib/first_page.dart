@@ -8,10 +8,7 @@ class First extends StatefulWidget{
 }
 
 void test (){
-  print("ONE");
-  Future.delayed(const Duration(milliseconds: 50000), () {
-    print("TWO");
-  });
+  
 }
 class _First extends State<First>{
   Widget build(BuildContext context){
@@ -23,10 +20,20 @@ class _First extends State<First>{
         child: (
           FlatButton(
             child: Text("data"),
-            onPressed: (){
-              test();
-              Navigator.push(context, store.getRoute);
-            },
+            onPressed: () async {
+                await new Future.delayed(const Duration(seconds: 5));
+                Navigator.push(context, store.getRoute);
+              },
+            // onPressed: (){
+            //   print("ONE");
+
+              
+
+            //   Future.delayed(const Duration(milliseconds: 10000), () {
+            //     print("TWO");
+            //     Navigator.push(context, store.getRoute);
+            //   });
+            // },
           )
         ),
       ),
