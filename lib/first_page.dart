@@ -7,6 +7,12 @@ class First extends StatefulWidget{
   _First createState() => _First();
 }
 
+void test (){
+  print("ONE");
+  Future.delayed(const Duration(milliseconds: 50000), () {
+    print("TWO");
+  });
+}
 class _First extends State<First>{
   Widget build(BuildContext context){
     final store = Provider.of<Store>(context);
@@ -18,6 +24,7 @@ class _First extends State<First>{
           FlatButton(
             child: Text("data"),
             onPressed: (){
+              test();
               Navigator.push(context, store.getRoute);
             },
           )
