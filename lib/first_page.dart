@@ -19,21 +19,11 @@ class _First extends State<First>{
         alignment: Alignment.center,
         child: (
           FlatButton(
-            child: Text("data"),
+            child: Text("CLICK"),
             onPressed: () async {
                 await new Future.delayed(const Duration(seconds: 5));
-                Navigator.push(context, store.getRoute);
+                Navigator.push(store.getContext, store.getRoute);
               },
-            // onPressed: (){
-            //   print("ONE");
-
-              
-
-            //   Future.delayed(const Duration(milliseconds: 10000), () {
-            //     print("TWO");
-            //     Navigator.push(context, store.getRoute);
-            //   });
-            // },
           )
         ),
       ),

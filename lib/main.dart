@@ -5,7 +5,7 @@ import 'package:vtemp/store.dart';
 import 'package:vtemp/first_page.dart';
 
 void main(){
-
+  BuildContext temp;
   runApp(MaterialApp(
     title: 'vTemperature',
     theme: themeData,
@@ -20,13 +20,14 @@ final ThemeData themeData = ThemeData(
 
 );
 
+
 class FirstPage extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     
     final store = Provider.of<Store>(context);
     store.setPage(SecondPage(),1);
-
+    store.setContext(context);
     return Scaffold(
       body: First()
     );
@@ -36,8 +37,7 @@ class FirstPage extends StatelessWidget{
 class SecondPage extends MaterialPageRoute{
   SecondPage() : super(
     builder: (BuildContext context){
-      // final store = Provider.of<Store>(context);
-      // store.setPage(ThidPage(),2);
+      //final store = Provider.of<Store>(context);
       return Scaffold(
         appBar: AppBar(
           title: Text("Second Page"),
@@ -47,3 +47,4 @@ class SecondPage extends MaterialPageRoute{
     }
   );
 }
+

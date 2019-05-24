@@ -1,7 +1,6 @@
-import 'package:vtemp/main.dart';
-import 'package:vtemp/store.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter/rendering.dart';
+import 'package:vtemp/text_input.dart';
 
 class Second extends StatefulWidget{
   @override 
@@ -10,20 +9,33 @@ class Second extends StatefulWidget{
 
 class _Second extends State<Second>{
   Widget build(BuildContext context){
-    //final store = Provider.of<Store>(context);
     return
-    Container(
-      child: Align(
-        alignment: Alignment.center,
-        child: (
-          FlatButton(
-            child: Text("data"),
-            onPressed: (){
-              Navigator.pop(context);
-            },
-          )
-        ),
-      ),
-    );
+     Container(
+          padding: const EdgeInsets.all(16.0),
+          child: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+               Text("data")
+              ],
+            ),
+          ),
+        );
+    // Row(
+    //   mainAxisAlignment: MainAxisAlignment.center,
+    //   children: <Widget>[
+    //     InputText(),
+    //     Align(
+    //       alignment: Alignment.bottomRight,
+    //       child:  IconButton(
+    //         icon: Icon(Icons.keyboard_arrow_left),
+    //         tooltip: 'BACK',
+    //         onPressed: () {
+    //           Navigator.pop(context);
+    //         },
+    //       ),
+    //     ),
+    // ], 
+    // );
   }
 }
